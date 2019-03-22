@@ -5,12 +5,6 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
-    //Needs to access the another script's score counter
-    //the life counter
-    //Game over status?
-    //Change display based on scene
-        //could make a start screen
-        //How do I cross fade
 
     public Text score;
     public Text lives;

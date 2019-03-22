@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 
-        Time.timeScale = 0;
+        
         transform.position = startPos;
         lives = 3;
         
@@ -30,8 +30,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-            Time.timeScale = 1;
+
         // Get the current screen position of the mouse from Input
         Vector3 mousePos2D = Input.mousePosition;
 

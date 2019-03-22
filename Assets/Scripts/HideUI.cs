@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// UNUSED SCRIPT FOR HIDING UI ELEMENTS
+/// </summary>
 public class HideUI : MonoBehaviour
 {
     CanvasGroup canvas;
@@ -27,13 +30,13 @@ public class HideUI : MonoBehaviour
     {
         print("Over");
         Show();
-        // Hide Icon
+       
     }
 
     private void OnMouseExit()
     {
         Hide();
-        // Show Icon
+        
     }
 
 }

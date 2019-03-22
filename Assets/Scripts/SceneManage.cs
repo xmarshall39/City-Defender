@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneManage : MonoBehaviour
 {
 
+    
     public void LifeLost()
     {
         //Destroy all falling objects
@@ -17,8 +18,15 @@ public class SceneManage : MonoBehaviour
             SceneManager.LoadScene("GameOver");
     }
 
+    private void Awake()
+    {
+        Time.timeScale = 0;
+    }
+
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+            Time.timeScale = 1;
         if (Input.GetKeyDown("escape"))
             Application.Quit();
     }
