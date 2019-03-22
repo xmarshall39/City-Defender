@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public Rigidbody2D rb;
 
     /* Properties:
      vector3 Position
@@ -36,7 +37,7 @@ public class Spawner : MonoBehaviour
     [Tooltip("Time between prefab spawns")]
     public float dropBuffer = 0.3f;
 
-    public float LR_Edge = 9f;   //Value of the edge of the screen. Check with this and neg this
+    public float LR_Edge = 10f;   //Value of the edge of the screen. Check with this and neg this
     public Vector3 pos;     //Creates a shorthand for transform.position
 
     [Space]
@@ -46,6 +47,7 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
+        
         print("Should be spawning...");
         GameObject fallen = Instantiate(fellObject) as GameObject;
         fallen.transform.position = transform.position;
@@ -53,20 +55,20 @@ public class Spawner : MonoBehaviour
 
     void ChangeDirection()  //ALT: ADJUST_VALUES
     {
-        pos = transform.position;
-        if (pos.x < -LR_Edge)
+        
+        if (transform.position.x < -LR_Edge)
         {
             speed = Mathf.Abs(speed);  // Move right
-            print($"Moving right: {pos.x}");
+            print($"Moving right: {transform.position.x}");
         }
 
-        else if (pos.x > LR_Edge)
+        else if (transform.position.x > LR_Edge)
         {
             speed = -Mathf.Abs(speed); // Move left
-            print($"Moving left: {pos.x}");
+            print($"Moving left: {transform.position.x}");
         }
         //Must be within bounds to change direction
-       if (Random.value <= directionChangeChance && pos.x > -LR_Edge && pos.x < LR_Edge) 
+       if (Random.value <= directionChangeChance && transform.position.x > -LR_Edge && transform.position.x < LR_Edge) 
             speed *= -1;
     }
 
@@ -82,6 +84,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         transform.position = pos; // CHANGE TO CENTER ON SCREEN
         InvokeRepeating("Spawn", 2f, dropBuffer);    //what's that float?
     }
@@ -91,8 +94,8 @@ public class Spawner : MonoBehaviour
     {
         //Here we make the spawner move, change its direction, and alter its constants
         //Then the spawning begins
-        transform.position = pos;
-        pos += (speed * Vector3.right * Time.deltaTime);
+        
+        transform.position += (speed * Vector3.right * Time.deltaTime);
 
 
     }
